@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anjuman-I-Islam's Kalsekar Technical Campus</title>
+</head>
+<body>
+
+    <h1>Welcome to Anjuman-I-Islam's Kalsekar Technical Campus</h1>
+    <p>This is the official website of our college.</p>
+
+    <a href="home.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="departments.html">Departments</a> |
+    <a href="contact.html">Contact Us</a>
+
+    <h2>Home Page</h2>
+    <p>Our college provides quality education and modern facilities for students.</p>
+
+    <h2>About Us</h2>
+    <p>Anjuman-I-Islam's Kalsekar Technical Campus (AIKTC) offers engineering, architecture, 
+       pharmacy, and management programs. Our mission is to provide world-class education 
+       and nurture future professionals with strong ethical values.</p>
+
+    <h2>Departments</h2>
+    <table border="1">
+        <tr>
+            <th>Department</th>
+            <th>Head</th>
+            <th>Contact</th>
+        </tr>
+        <tr>
+            <td>Computer Science & Engineering (AI & ML)</td>
+            <td>Dr. Salim Shaikh</td>
+            <td>aiml@aiktc.ac.in</td>
+        </tr>
+        <tr>
+            <td>Computer Science & Engineering (DS)</td>
+            <td>Dr. Tabassum</td>
+            <td>ds@aiktc.ac.in</td>
+        </tr>
+        <tr>
+            <td>Computer Engineering</td>
+            <td>Dr. Tabrez Khan</td>
+            <td>co@aiktc.edu</td>
+        </tr>
+    </table>
+
+    <h2>Contact Us</h2>
+    <form>
+        Name: <input type="text" name="name"><br><br>
+        Email: <input type="email" name="email"><br><br>
+        Message:<br>
+        <textarea rows="5" cols="40" name="message"></textarea><br><br>
+        <input type="submit" value="Send">
+        <input type="reset" value="Clear">
+    </form>
+
+</body>
+</html>
