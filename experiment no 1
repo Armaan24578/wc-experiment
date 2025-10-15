@@ -1,59 +1,188 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Anjuman-I-Islam's Kalsekar Technical Campus</title>
+  <meta charset="UTF-8">
+  <title>Anjuman-I-Islam's Kalsekar Technical Campus</title>
+  <style>
+    /* Reset some default margins and paddings */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f4f7f9;
+      color: #333;
+      padding: 20px;
+    }
+    header {
+      background: #003366;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    nav {
+      text-align: center;
+      margin: 20px 0;
+    }
+    nav a {
+      color: #003366;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+      padding: 8px 12px;
+    }
+    nav a:hover {
+      background: #003366;
+      color: #fff;
+      border-radius: 4px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin: 30px 0 10px;
+      color: #003366;
+    }
+    p {
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    table th, table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    table th {
+      background: #e1e7ed;
+    }
+    form {
+      margin-top: 20px;
+    }
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-size: 1em;
+    }
+    form input[type="submit"],
+    form input[type="reset"] {
+      background: #003366;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+    form input[type="submit"]:hover,
+    form input[type="reset"]:hover {
+      background: #002244;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Welcome to Anjuman-I-Islam's Kalsekar Technical Campus</h1>
-    <p>This is the official website of our college.</p>
+  <header>
+    <h1>Anjuman-I-Islam's Kalsekar Technical Campus</h1>
+  </header>
 
-    <a href="home.html">Home</a> |
-    <a href="about.html">About</a> |
-    <a href="departments.html">Departments</a> |
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="departments.html">Departments</a>
     <a href="contact.html">Contact Us</a>
+  </nav>
 
-    <h2>Home Page</h2>
-    <p>Our college provides quality education and modern facilities for students.</p>
+  <div class="container">
+    <section id="home">
+      <h2>Home Page</h2>
+      <p>Welcome to Anjuman-I-Islam's Kalsekar Technical Campus. Our college provides quality education and modern facilities for students.</p>
+    </section>
 
-    <h2>About Us</h2>
-    <p>Anjuman-I-Islam's Kalsekar Technical Campus (AIKTC) offers engineering, architecture, 
-       pharmacy, and management programs. Our mission is to provide world-class education 
-       and nurture future professionals with strong ethical values.</p>
+    <section id="about">
+      <h2>About Us</h2>
+      <p>Anjuman-I-Islam's Kalsekar Technical Campus (AIKTC) offers engineering, architecture, pharmacy, and management programs. Our mission is to provide world-class education and nurture future professionals with strong ethical values.</p>
+    </section>
 
-    <h2>Departments</h2>
-    <table border="1">
+    <section id="departments">
+      <h2>Departments</h2>
+      <table>
         <tr>
-            <th>Department</th>
-            <th>Head</th>
-            <th>Contact</th>
+          <th>Department</th>
+          <th>Head</th>
+          <th>Contact</th>
         </tr>
         <tr>
-            <td>Computer Science & Engineering (AI & ML)</td>
-            <td>Dr. Salim Shaikh</td>
-            <td>aiml@aiktc.ac.in</td>
+          <td>Computer Science & Engineering (AI & ML)</td>
+          <td>Dr. Salim Shaikh</td>
+          <td>aiml@aiktc.ac.in</td>
         </tr>
         <tr>
-            <td>Computer Science & Engineering (DS)</td>
-            <td>Dr. Tabassum</td>
-            <td>ds@aiktc.ac.in</td>
+          <td>Computer Science & Engineering (DS)</td>
+          <td>Dr. Tabassum</td>
+          <td>ds@aiktc.ac.in</td>
         </tr>
         <tr>
-            <td>Computer Engineering</td>
-            <td>Dr. Tabrez Khan</td>
-            <td>co@aiktc.edu</td>
+          <td>Computer Engineering</td>
+          <td>Dr. Tabrez Khan</td>
+          <td>co@aiktc.edu</td>
         </tr>
-    </table>
+      </table>
+    </section>
 
-    <h2>Contact Us</h2>
-    <form>
-        Name: <input type="text" name="name"><br><br>
-        Email: <input type="email" name="email"><br><br>
-        Message:<br>
-        <textarea rows="5" cols="40" name="message"></textarea><br><br>
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <form action="#" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email">
+
+        <label for="message">Message:</label>
+        <textarea name="message" id="message" rows="5"></textarea>
+
         <input type="submit" value="Send">
         <input type="reset" value="Clear">
-    </form>
+      </form>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Anjuman-I-Islam's Kalsekar Technical Campus. All rights reserved.
+  </footer>
 
 </body>
 </html>
