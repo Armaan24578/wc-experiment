@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration Form</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #f2f4f8, #d9e2ec);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .registration-card {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 2rem;
+      width: 100%;
+      max-width: 500px;
+    }
+    .form-floating > .error {
+      position: absolute;
+      bottom: -1.25rem;
+      left: 0;
+      font-size: 0.875rem;
+      color: #dc3545;
+    }
+    .btn-custom {
+      background-color: #007bff;
+      color: #fff;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .btn-custom:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="registration-card">
+    <h2 class="mb-4 text-center">Create Account</h2>
+    <form id="registrationForm" novalidate>
+      <!-- First Name -->
+      <div class="form-floating mb-4 position-relative">
+        <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+        <label for="firstName">First Name</label>
+        <div class="error" id="firstNameError"></div>
+      </div>
+
+      <!-- Last Name -->
+      <div class="form-floating mb-4 position-relative">
+        <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+        <label for="lastName">Last Name</label>
+        <div class="error" id="lastNameError"></div>
+      </div>
+
+      <!-- Address -->
+      <div class="form-floating mb-4 position-relative">
+        <input type="text" class="form-control" id="address" placeholder="Address" required>
+        <label for="address">Address</label>
+        <div class="error" id="addressError"></div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-floating mb-4 position-relative">
+        <input type="password" class="form-control" id="password" placeholder="Password" required>
+        <label for="password">Password</label>
+        <div class="error" id="passwordError"></div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-floating mb-4 position-relative">
+        <input type="email" class="form-control" id="email" placeholder="name@domain.com" required>
+        <label for="email">Email address</label>
+        <div class="error" id="emailError"></div>
+      </div>
+
+      <!-- Mobile Number -->
+      <div class="form-floating mb-4 position-relative">
+        <input type="text" class="form-control" id="mobile" placeholder="10-digit Mobile Number" required>
+        <label for="mobile">Mobile Number</label>
+        <div class="error" id="mobileError"></div>
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-custom btn-lg">Register</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS (bundle includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      clearErrors();
+      let isValid = true;
+
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const password = document.getElementById("password").value;
+      const email = document.getElementById("email").value.trim();
+      const mobile = document.getElementById("mobile").value.trim();
+
+      // First Name
+      if (firstName.length < 6) {
+        showError("firstNameError", "First Name must be at least 6 characters long.");
+        isValid = false;
+      } else if (!/^[A-Za-z]+$/.test(firstName)) {
+        showError("firstNameError", "First Name must contain only letters.");
+        isValid = false;
+      }
+
+      // Last Name
+      if (lastName === "") {
+        showError("lastNameError", "Last Name must not be empty.");
+        isValid = false;
+      }
+
+      // Address
+      if (address === "") {
+        showError("addressError", "Address must not be empty.");
+        isValid = false;
+      }
+
+      // Password
+      if (password.length < 6) {
+        showError("passwordError", "Password must be at least 6 characters long.");
+        isValid = false;
+      }
+
+      // Email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showError("emailError", "Please enter a valid email (name@domain.com).");
+        isValid = false;
+      }
+
+      // Mobile Number
+      if (!/^\d{10}$/.test(mobile)) {
+        showError("mobileError", "Mobile number must be exactly 10 digits.");
+        isValid = false;
+      }
+
+      if (isValid) {
+        // You can submit form, send data to server, or further process
+        // For demo, just alert and reset
+        alert("Registration successful!");
+        document.getElementById("registrationForm").reset();
+      }
+    });
+
+    function clearErrors() {
+      const errorEls = document.querySelectorAll(".error");
+      errorEls.forEach(el => el.textContent = "");
+    }
+
+    function showError(elementId, message) {
+      document.getElementById(elementId).textContent = message;
+    }
+  </script>
+
+</body>
+</html>
+

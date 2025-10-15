@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>React Registration Demo</title>
+  <!-- CDN links for React + Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .form-field { margin-bottom: 16px; }
+    .error { color: red; font-size: 0.9em; }
+    .card { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 2px 2px 8px rgba(0,0,0,0.1); }
+    .btn { padding: 10px 16px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    .btn:disabled { background-color: #aaa; }
+  </style>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <!-- React code -->
+  <script type="text/babel">
+
+    function RegistrationForm() {
+      // using React hooks for state
+      const [form, setForm] = React.useState({
+        firstName: '',
+        lastName: '',
+        address: '',
+        password: '',
+        email: '',
+        mobile: '',
+      });
+      const [errors, setErrors] = React.useState({});
+
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm(prev => ({ ...prev, [name]: value }));
+      };
+
+      const validate = () => {
+        const errs = {};
+        // First Name: alphabets only, min length 6
+        if (!form.firstName || form.firstName.trim().length < 6) {
+          errs.firstName = "First Name must be at least 6 characters.";
+        } else if (!/^[A-Za-z]+$/.test(form.firstName.trim())) {
+          errs.firstName = "First Name can contain only letters.";
+        }
+        // Last Name not empty
+        if (!form.lastName || form.lastName.trim().length === 0) {
+          errs.lastName = "Last Name is required.";
+        }
+        // Address not empty
+        if (!form.address || form.address.trim().length === 0) {
+          errs.address = "Address is required.";
+        }
+        // Password min length 6
+        if (!form.password || form.password.length < 6) {
+          errs.password = "Password must be at least 6 characters.";
+        }
+        // Email pattern
+        const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+        if (!form.email || !emailRegex.test(form.email)) {
+          errs.email = "Enter a valid email (name@domain.com).";
+        }
+        // Mobile: exactly 10 digits
+        if (!form.mobile || !/^[0-9]{10}$/.test(form.mobile)) {
+          errs.mobile = "Mobile must be exactly 10 digits.";
+        }
+        return errs;
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        const v = validate();
+        setErrors(v);
+        if (Object.keys(v).length === 0) {
+          alert("Registration successful!");
+          // In real app, send to backend or further processing
+        }
+      };
+
+      return (
+        <div className="card">
+          <h2 style={{ textAlign: 'center' }}>Register</h2>
+          <form onSubmit={handleSubmit} noValidate>
+            {[
+              { label: "First Name", name: "firstName", type: "text" },
+              { label: "Last Name", name: "lastName", type: "text" },
+              { label: "Address", name: "address", type: "text" },
+              { label: "Password", name: "password", type: "password" },
+              { label: "Email", name: "email", type: "text" },
+              { label: "Mobile Number", name: "mobile", type: "text" },
+            ].map(field => (
+              <div className="form-field" key={field.name}>
+                <label>{field.label}</label><br/>
+                <input
+                  name={field.name}
+                  type={field.type}
+                  value={form[field.name]}
+                  onChange={handleChange}
+                />
+                {errors[field.name] && <div className="error">{errors[field.name]}</div>}
+              </div>
+            ))}
+
+            <div style={{ textAlign: 'center' }}>
+              <button type="submit" className="btn">Submit</button>
+            </div>
+          </form>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<RegistrationForm />);
+
+  </script>
+
+</body>
+</html>
+
