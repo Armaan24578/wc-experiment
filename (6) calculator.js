@@ -1,14 +1,13 @@
-// calculator.js
 
 const readline = require('readline');
 
-// Create interface for input / output
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-// Utility: prompt user & return a Promise
+
 function ask(question) {
   return new Promise((resolve) => {
     rl.question(question, (answer) => {
@@ -17,7 +16,7 @@ function ask(question) {
   });
 }
 
-// Validate that a string is a number (integer or float)
+
 function isNumeric(value) {
   return !isNaN(value) && value.trim() !== '';
 }
@@ -26,7 +25,7 @@ async function main() {
   console.log("Simple CLI Calculator");
   console.log("Supported operations: +, -, *, /");
 
-  // 1. Ask operation
+
   let op;
   while (true) {
     op = await ask("Enter operation (+, -, *, /): ");
@@ -37,7 +36,7 @@ async function main() {
     console.log("Invalid operation. Please enter one of +, -, *, /");
   }
 
-  // 2. Ask first number
+
   let num1;
   while (true) {
     let ans = await ask("Enter first number: ");
@@ -59,7 +58,6 @@ async function main() {
     console.log("That is not a valid number. Try again.");
   }
 
-  // 4. Compute result
   let result;
   switch (op) {
     case '+':
@@ -90,9 +88,8 @@ async function main() {
   rl.close();
 }
 
-// Run the calculator
+
 main().catch((err) => {
   console.error("Error:", err);
   rl.close();
 });
-
